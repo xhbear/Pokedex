@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp"
+    android:layout_margin="4dp">
+
+    <TextView
+        android:id="@+id/pokemonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pokemonId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/pokemonName"
+        app:layout_constraintTop_toBottomOf="@id/pokemonName" />
+
+    <TextView
+        android:id="@+id/pokemonAtk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/pokemonName"
+        app:layout_constraintTop_toBottomOf="@id/pokemonId" />
+
+    <TextView
+        android:id="@+id/pokemonDef"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/pokemonAtk"
+        app:layout_constraintStart_toStartOf="@id/pokemonName"
+        app:layout_constraintTop_toBottomOf="@id/pokemonAtk" />
+
+    <TextView
+        android:id="@+id/pokemonSpd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/pokemonAtk"
+        app:layout_constraintStart_toStartOf="@id/pokemonName"
+        app:layout_constraintTop_toBottomOf="@id/pokemonDef" />
+
+    <ImageButton
+        android:id="@+id/favouriteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:src="@drawable/ic_favorite_false"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/pokemonName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/pokemonImg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
+        android:src="@drawable/ic_placeholderimg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/favouriteButton"
+        app:layout_constraintStart_toEndOf="@+id/pokemonAtk"
+        app:layout_constraintTop_toTopOf="@id/pokemonId" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
