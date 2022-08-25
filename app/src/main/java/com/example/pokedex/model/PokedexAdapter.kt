@@ -14,6 +14,11 @@ import com.example.pokedex.R
 import com.example.pokedex.data.Pokemon
 import com.example.pokedex.databinding.IndividualPokemonCardBinding
 
+/**
+ * description: recycler view adapter that handles the grid display of Pokemon entries
+ * source: input source is from a fixed json document obtained from an API
+ * expected behaviour: it should not inflate pokemon data beyond the single input source
+ */
 class PokedexAdapter :
     ListAdapter<Pokemon, PokedexAdapter.ViewHolder>(PokemonDiffCallback) {
 
@@ -34,6 +39,7 @@ class PokedexAdapter :
             LayoutInflater.from(parent.context), parent, false)
         val viewHolder = ViewHolder(binding)
 
+        // react to user clicks with the favourite button
         viewHolder.favorite.setOnClickListener {
             val position = viewHolder.adapterPosition
             val pokemon = getItem(position)
@@ -53,6 +59,14 @@ class PokedexAdapter :
                 }
             }
         }
+
+        // react to user clicks to the pokemon image (opens up detailed pokedex entry)
+        /*
+        viewHolder.pokemonImage.setOnClickListener {
+            val position = viewHolder.adapterPosition
+            DetailedPokedexEntryActivity.actionStart(it.context, getItem(position))
+        }
+        */
         return viewHolder
     }
 
@@ -78,30 +92,6 @@ class PokedexAdapter :
         }
     }
 
-    /** set background color based on pokemon primary type */
-    fun setPokemonColor(holder: ViewHolder, pokemonColor: String) {
-        when (pokemonColor) {
-            "Normal" -> holder.itemView.setBackgroundResource(R.color.Normal)
-            "Fire" -> holder.itemView.setBackgroundResource(R.color.Fire)
-            "Water" -> holder.itemView.setBackgroundResource(R.color.Water)
-            "Electric" -> holder.itemView.setBackgroundResource(R.color.Electric)
-            "Grass" -> holder.itemView.setBackgroundResource(R.color.Grass)
-            "Ice" -> holder.itemView.setBackgroundResource(R.color.Ice)
-            "Fighting" -> holder.itemView.setBackgroundResource(R.color.Fighting)
-            "Poison" -> holder.itemView.setBackgroundResource(R.color.Poison)
-            "Ground" -> holder.itemView.setBackgroundResource(R.color.Ground)
-            "Flying" -> holder.itemView.setBackgroundResource(R.color.Flying)
-            "Psychic" -> holder.itemView.setBackgroundResource(R.color.Psychic)
-            "Bug" -> holder.itemView.setBackgroundResource(R.color.Bug)
-            "Rock" -> holder.itemView.setBackgroundResource(R.color.Rock)
-            "Ghost" -> holder.itemView.setBackgroundResource(R.color.Ghost)
-            "Dragon" -> holder.itemView.setBackgroundResource(R.color.Dragon)
-            "Dark" -> holder.itemView.setBackgroundResource(R.color.Dark)
-            "Steel" -> holder.itemView.setBackgroundResource(R.color.Steel)
-            "Fairy" -> holder.itemView.setBackgroundResource(R.color.Fairy)
-        }
-    }
-
     object PokemonDiffCallback: DiffUtil.ItemCallback<Pokemon>() {
         override fun areItemsTheSame(oldItem: Pokemon, newItem: Pokemon): Boolean {
             return oldItem.isFavorite == newItem.isFavorite
@@ -109,6 +99,32 @@ class PokedexAdapter :
 
         override fun areContentsTheSame(oldItem: Pokemon, newItem: Pokemon): Boolean {
             return oldItem == newItem
+        }
+    }
+
+    companion object {
+        /** set background color based on pokemon primary type */
+        fun setPokemonColor(holder: ViewHolder, pokemonColor: String) {
+            when (pokemonColor) {
+                "Normal" -> holder.itemView.setBackgroundResource(R.color.Normal)
+                "Fire" -> holder.itemView.setBackgroundResource(R.color.Fire)
+                "Water" -> holder.itemView.setBackgroundResource(R.color.Water)
+                "Electric" -> holder.itemView.setBackgroundResource(R.color.Electric)
+                "Grass" -> holder.itemView.setBackgroundResource(R.color.Grass)
+                "Ice" -> holder.itemView.setBackgroundResource(R.color.Ice)
+                "Fighting" -> holder.itemView.setBackgroundResource(R.color.Fighting)
+                "Poison" -> holder.itemView.setBackgroundResource(R.color.Poison)
+                "Ground" -> holder.itemView.setBackgroundResource(R.color.Ground)
+                "Flying" -> holder.itemView.setBackgroundResource(R.color.Flying)
+                "Psychic" -> holder.itemView.setBackgroundResource(R.color.Psychic)
+                "Bug" -> holder.itemView.setBackgroundResource(R.color.Bug)
+                "Rock" -> holder.itemView.setBackgroundResource(R.color.Rock)
+                "Ghost" -> holder.itemView.setBackgroundResource(R.color.Ghost)
+                "Dragon" -> holder.itemView.setBackgroundResource(R.color.Dragon)
+                "Dark" -> holder.itemView.setBackgroundResource(R.color.Dark)
+                "Steel" -> holder.itemView.setBackgroundResource(R.color.Steel)
+                "Fairy" -> holder.itemView.setBackgroundResource(R.color.Fairy)
+            }
         }
     }
 

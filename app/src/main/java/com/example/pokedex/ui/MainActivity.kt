@@ -1,6 +1,5 @@
 package com.example.pokedex.ui
 
-import android.os.Build.VERSION_CODES.P
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.pokedex.databinding.ActivityMainBinding

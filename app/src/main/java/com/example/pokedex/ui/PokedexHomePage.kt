@@ -6,17 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.pokedex.model.PokedexViewModel
 import com.example.pokedex.databinding.FragmentPokedexHomePageBinding
 import com.example.pokedex.model.PokedexAdapter
+import com.example.pokedex.model.PokedexViewModel
+import kotlinx.coroutines.launch
 
 class PokedexHomePage : Fragment() {
 
     private var _binding: FragmentPokedexHomePageBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel = PokedexViewModel
+    private val viewModel: PokedexViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,14 +47,14 @@ class PokedexHomePage : Fragment() {
         binding.pokedexItemRecyclerView.adapter = adapter
 
         /** notify viewModel to start OkHttp request */
-        viewModel.sendRequestWithOkHttp()
+        viewModel.viewModelScope.launch {
+            viewModel.sendRequestWithOkHttp()
+        }
 
         /** observe changes in pokemonList data and notify adapter subsequently */
-        this.viewModel.pokemonList.observe(viewLifecycleOwner, Observer { newData ->
+        viewModel.pokemonList.observe(viewLifecycleOwner, Observer { newData ->
             adapter.submitList(newData)
         })
-
-
     }
 
     override fun onDestroyView() {

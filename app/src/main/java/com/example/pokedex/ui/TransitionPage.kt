@@ -5,8 +5,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.example.pokedex.R
 import com.example.pokedex.databinding.ActivityTransitionPageBinding
+import com.example.pokedex.model.PokedexViewModel
 
 class TransitionPage : AppCompatActivity() {
 

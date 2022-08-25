@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="20dp"
-    android:layout_margin="4dp">
+    android:layout_margin="4dp"
+    android:background="?android:attr/selectableItemBackground">
 
     <TextView
         android:id="@+id/pokemonName"
@@ -64,6 +65,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/favouriteButton"
         app:layout_constraintStart_toEndOf="@+id/pokemonAtk"
-        app:layout_constraintTop_toTopOf="@id/pokemonId" />
+        app:layout_constraintTop_toTopOf="@id/pokemonId"
+        android:clickable="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
