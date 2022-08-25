@@ -21,6 +21,9 @@
             android:name=".ui.TransitionPage"
             android:exported="false"
             android:launchMode="singleInstance" />
+        <activity android:name=".ui.DetailedPokedexEntryActivity"
+            android:exported="true"
+            android:launchMode="standard" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"

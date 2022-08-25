@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.pokedex.R
 import com.example.pokedex.data.Pokemon
 import com.example.pokedex.databinding.IndividualPokemonCardBinding
+import com.example.pokedex.ui.DetailedPokedexEntryActivity
 
 /**
  * description: recycler view adapter that handles the grid display of Pokemon entries
@@ -61,12 +62,12 @@ class PokedexAdapter :
         }
 
         // react to user clicks to the pokemon image (opens up detailed pokedex entry)
-        /*
+
         viewHolder.pokemonImage.setOnClickListener {
             val position = viewHolder.adapterPosition
             DetailedPokedexEntryActivity.actionStart(it.context, getItem(position))
         }
-        */
+
         return viewHolder
     }
 
